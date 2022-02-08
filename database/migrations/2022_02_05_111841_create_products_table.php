@@ -15,7 +15,6 @@ class CreateProductsTable extends Migration
     {
         
         Schema::create('products', function (Blueprint $table) {
-            $table->engine = 'MyISAM';
             $table->id();
             $table->string('title', 255);
             $table->string('url', 255);
@@ -23,10 +22,10 @@ class CreateProductsTable extends Migration
             $table->integer('price')->nullable();
             $table->text('description')->nullable();
             $table->text('body')->nullable();
-            $table->unsignedInteger('category_id')->nullable();
-            $table->unsignedInteger('user_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

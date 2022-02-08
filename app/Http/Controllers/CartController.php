@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -46,7 +47,13 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        
+        $cartItems = $user->cart()->with('product')->get();
+        
+        return view('cart', [
+            'cartItems' => $cartItems
+        ]);
     }
 
     /**

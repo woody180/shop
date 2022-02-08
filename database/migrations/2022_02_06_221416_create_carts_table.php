@@ -14,13 +14,12 @@ class CreateCartsTable extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->engine = 'MyISAM';
             $table->id();
             $table->integer('quantity')->default(0);
-            $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('product_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('product')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
             $table->integer('complete')->default(0);
             $table->timestamps();
         });
