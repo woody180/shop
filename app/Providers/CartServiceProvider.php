@@ -15,7 +15,7 @@ class CartServiceProvider extends ServiceProvider
     {
         $this->app->bind('cart', function() {
             
-            return new \App\Cart\Cart();
+            return new \App\CartCount\CartService();
         });
     }
 

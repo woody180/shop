@@ -13,6 +13,7 @@
     </thead>
     
     <tbody>
+        
         @foreach ($cartItems as $item)
         <tr>
             <td><a href="{{ url('products/'.$item->product->id) }}">{{ $item->product->title }} ({{ $item->quantity }})</a></td>

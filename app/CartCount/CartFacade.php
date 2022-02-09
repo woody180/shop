@@ -1,4 +1,4 @@
-<?php namespace App\Cart;
+<?php namespace App\CartCount;
 
 
 use Illuminate\Support\Facades\Facade;

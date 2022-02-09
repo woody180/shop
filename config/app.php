@@ -231,7 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         
-        'Cart' => App\Cart\CartFacade::class
+        'Cart' => App\CartCount\CartFacade::class
     ],
 
 ];

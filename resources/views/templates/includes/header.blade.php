@@ -33,7 +33,7 @@
                     <a href="{{ url('cart/1') }}" class="uk-button uk-button-default uk-position-relative" type="button" >
                         cart
                     
-                        <span class="uk-badge uk-position-absolute" id="shop-cart-count" style="top: -5px; right: -5px;">0</span>
+                        <span class="uk-badge uk-position-absolute" id="shop-cart-count" style="top: -5px; right: -5px;">{{ Cart::greet() }}</span>
                     </a>
                 </div>
 
