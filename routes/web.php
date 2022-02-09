@@ -17,9 +17,18 @@ use App\Http\Controllers\CartController;
 */
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth'])->name('dashboard');
+
+
+
+Route::group(['prefix' => 'dashboard'], function() {
+    
+    Route::get('/', function() {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 
 
