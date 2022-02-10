@@ -26,6 +26,11 @@
                                 <td>{{ $item->user->name }} - id: {{ $item->user->id }}</td>
                                 <td>
                                     <div>
+                                        @if ($item->checkedout)
+                                        <a style="color: #6ba119" clsss="uk-icon-button uk-text-success" href="#" uk-icon="icon: check" uk-tooltip="Checked out item"></a>
+                                        @else
+                                        <a style="pointer-events: none; color: #ababab;" clsss="uk-icon-button" href="#" uk-icon="icon: minus" uk-tooltip="Checked out item"></a>
+                                        @endif
                                         <a clsss="uk-icon-button" href="#" uk-icon="icon: pencil;"></a>
                                         <a clsss="uk-icon-button" href="#" uk-icon="icon: trash;"></a>
                                     </div>
