@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +49,13 @@ Route::resource('categories', CategoryController::class);
 Route::resource('cart', CartController::class);
 
 Route::put('checkout/{id}', [CartController::class, 'checkout']);
+
+
+Route::get('reset-cart', function(Request $request) {
+
+    Cart::truncate();
+    
+    return back();
+});
 
 require __DIR__.'/auth.php';
