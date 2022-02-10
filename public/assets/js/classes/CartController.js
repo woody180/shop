@@ -48,7 +48,7 @@ export default class CartController {
             const _this         = e.target.closest(this.selectors('addToCartBtn')); // Get target element
             const productID     = _this.getAttribute('data-id'); // Get product ID
             const quantityField = this.dom.quantityField; // Get quantity field form product inner page (if it is)
-            const quantity      = quantityField ? parseInt(quantityField.value) : this.variables.cartItems += 1; // Define product quantity. Quanity from products or from inner page.
+            const quantity      = quantityField ? parseInt(quantityField.value) : this.variables.cartItems + 1; // Define product quantity. Quanity from products or from inner page.
             const count         = this.dom.cartCount.innerText.length ? parseInt(this.dom.cartCount.innerText) : 0;
             
             this.dom.cartCount.innerText = count + quantity;
