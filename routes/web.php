@@ -23,13 +23,22 @@ use App\Http\Controllers\CartController;
 
 
 
-Route::group(['prefix' => 'dashboard'], function() {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     
     Route::get('/', function() {
         return view('dashboard');
-    })->name('dashboard');
+    })->name('index');
+    
+    Route::get('/cart', function() {
+        
+        $cartModel = new App\Models\Cart();
+        $cartItems = $cartModel->with('product')->with('user')->get();
+        
+        return view('adminCart', [
+            'cartItems' => $cartModel->with('product')->get()
+        ]);
+    })->name('cart');
 });
-
 
 
 Route::resource('/home', ProductController::class);
@@ -37,5 +46,7 @@ Route::resource('/', ProductController::class);
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('cart', CartController::class);
+
+Route::put('checkout/{id}', [CartController::class, 'checkout']);
 
 require __DIR__.'/auth.php';
