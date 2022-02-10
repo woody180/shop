@@ -78,12 +78,27 @@ class CartController extends Controller
     {
         $body = $request->input();
         $body['user_id'] = 1;
+        unset($body['_token']);
+        unset($body['_method']);
         
-        Cart::updateOrInsert($body);
-        
-        return response()
-            ->json(['success' => 'Items inserted successfully!']);
+        if (Request()->ajax()) {
+            Cart::updateOrInsert($body);
+            return response()->json(['success' => 'Items inserted successfully!']);
+        }
     }
+    
+    
+    public function checkout(Request $request, $id)
+    {
+        $item = Cart::find($id);
+        $item->checkedout = 1;
+        $item->save();
+        
+        $request->session()->flash('message', 'Item has been checked out successfully.');
+        
+        return  back()->withInput(['success' => 'Checked out']);
+    }
+    
 
     /**
      * Remove the specified resource from storage.
