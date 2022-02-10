@@ -20,6 +20,7 @@ class CreateCartsTable extends Migration
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
+            $table->integer('checkedout')->default(0);
             $table->integer('complete')->default(0);
             $table->timestamps();
         });
