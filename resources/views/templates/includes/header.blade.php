@@ -20,6 +20,7 @@
                     @if (Auth::check())
                     <li><a href="{{ url('logout') }}">Logout</a></li>
                     @endif
+                    <li><a href="{{ url('reset-cart') }}">Reset cart</a></li>
                 </ul>
 
             </div>
